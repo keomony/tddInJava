@@ -16,6 +16,8 @@ public class StringJoinerTests {
 //    For instance, joining the strings {"a", "b”, "c”} on the delimiter ",” would result in the string "a,b,c”.
 //    Note that there is not a leading or trailing comma.
 
+//    return "" if the element is null
+
 
     @BeforeEach
     void setUp() {
@@ -27,7 +29,7 @@ public class StringJoinerTests {
     void shouldJoinIntoEmptyStringWhenListIsEmpty() {
         inputStrings.add("");
 
-        String actual = stringsJoiner.join(inputStrings);
+        String actual = stringsJoiner.join(",", inputStrings);
 
         Assertions.assertEquals("", actual);
     }
@@ -36,7 +38,7 @@ public class StringJoinerTests {
     void shouldJoinIntoAStringWhenListIsOneString() {
         inputStrings.add("any string");
 
-        String actual = stringsJoiner.join(inputStrings);
+        String actual = stringsJoiner.join(",", inputStrings);
 
         Assertions.assertEquals("any string", actual);
     }
@@ -46,9 +48,21 @@ public class StringJoinerTests {
         inputStrings.add("A");
         inputStrings.add("B");
 
-        String actual = stringsJoiner.join(inputStrings);
+        String actual = stringsJoiner.join(",", inputStrings);
 
         Assertions.assertTrue(actual.contains("A"));
         Assertions.assertTrue(actual.contains("B"));
+    }
+
+    @Test
+    void shouldPutDelimiterBetweenStrings() {
+        inputStrings.add("A");
+        inputStrings.add("B");
+        inputStrings.add("C");
+
+        String actual = stringsJoiner.join(",", inputStrings);
+
+        Assertions.assertEquals("A,B,C", actual);
+
     }
 }
