@@ -40,4 +40,15 @@ public class StringJoinerTests {
 
         Assertions.assertEquals("any string", actual);
     }
+
+    @Test
+    void shouldContainBothStringsWhenListIsTwoStrings() {
+        inputStrings.add("A");
+        inputStrings.add("B");
+
+        String actual = stringsJoiner.join(inputStrings);
+
+        Assertions.assertTrue(actual.contains("A"));
+        Assertions.assertTrue(actual.contains("B"));
+    }
 }
