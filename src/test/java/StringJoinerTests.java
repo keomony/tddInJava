@@ -10,15 +10,6 @@ public class StringJoinerTests {
     private StringsJoiner stringsJoiner;
     private List<String> inputStrings;
 
-//    Join - Joining a list of strings
-//    means creating a single new string by
-//    concatenating the string in list together with a delimiter between them.
-//    For instance, joining the strings {"a", "b”, "c”} on the delimiter ",” would result in the string "a,b,c”.
-//    Note that there is not a leading or trailing comma.
-
-//    return "" if the element is null
-
-
     @BeforeEach
     void setUp() {
         stringsJoiner = new StringsJoiner();
@@ -55,7 +46,7 @@ public class StringJoinerTests {
     }
 
     @Test
-    void shouldPutDelimiterBetweenStrings() {
+    void shouldPutDelimiterComaBetweenStrings() {
         inputStrings.add("A");
         inputStrings.add("B");
         inputStrings.add("C");
@@ -64,5 +55,16 @@ public class StringJoinerTests {
 
         Assertions.assertEquals("A,B,C", actual);
 
+    }
+
+    @Test
+    void shouldPutDelimiterSemicolonBetweenStrings() {
+        inputStrings.add("A");
+        inputStrings.add("B");
+        inputStrings.add("C");
+
+        String actual = stringsJoiner.join(";", inputStrings);
+
+        Assertions.assertEquals("A;B;C", actual);
     }
 }
