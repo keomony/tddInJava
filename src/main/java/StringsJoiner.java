@@ -7,16 +7,18 @@ public class StringsJoiner {
 
         if(stringsAreValid(strings)) {
 
-            for (String string : strings) {
-                result += string + delimiter;
-            }
-
-            return trimTheLastCharInStrings(result);
+            result = trimTheLastCharInStrings(joinStringsAndDelimiter(strings, delimiter, result));
         }
 
         return result;
     }
 
+    private String joinStringsAndDelimiter(List<String> strings, String delimiter, String result){
+        for (String string : strings) {
+            result += string + delimiter;
+        }
+        return result;
+    }
 
     private Boolean stringsAreValid(List<String> strings){
         return (strings.size() > 0 && !strings.isEmpty() && !strings.contains(null));
