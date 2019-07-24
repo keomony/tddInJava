@@ -67,4 +67,15 @@ public class StringJoinerTests {
 
         Assertions.assertEquals("A;B;C", actual);
     }
+
+    @Test
+    void shouldReturnEmptyStringWhenAnyStringIsNull() {
+        inputStrings.add("Pick up apples");
+        inputStrings.add("Get some bread");
+        inputStrings.add(null);
+
+        String actual = stringsJoiner.join(";", inputStrings);
+
+        Assertions.assertEquals("", actual);
+    }
 }
