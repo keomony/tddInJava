@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StringJoinerTests {
@@ -36,8 +37,8 @@ public class StringJoinerTests {
 
     @Test
     void shouldContainBothStringsWhenListIsTwoStrings() {
-        inputStrings.add("A");
-        inputStrings.add("B");
+        String[] strings = {"A", "B"};
+        inputStrings.addAll(Arrays.asList(strings));
 
         String actual = stringsJoiner.join(",", inputStrings);
 
@@ -47,9 +48,8 @@ public class StringJoinerTests {
 
     @Test
     void shouldPutDelimiterComaBetweenStrings() {
-        inputStrings.add("A");
-        inputStrings.add("B");
-        inputStrings.add("C");
+        String[] strings = {"A", "B", "C"};
+        inputStrings.addAll(Arrays.asList(strings));
 
         String actual = stringsJoiner.join(",", inputStrings);
 
@@ -58,9 +58,8 @@ public class StringJoinerTests {
 
     @Test
     void shouldPutDelimiterSemicolonBetweenStrings() {
-        inputStrings.add("A");
-        inputStrings.add("B");
-        inputStrings.add("C");
+        String[] strings = {"A", "B", "C"};
+        inputStrings.addAll(Arrays.asList(strings));
 
         String actual = stringsJoiner.join(";", inputStrings);
 
@@ -69,12 +68,22 @@ public class StringJoinerTests {
 
     @Test
     void shouldReturnEmptyStringWhenAnyStringIsNull() {
-        inputStrings.add("Pick up apples");
-        inputStrings.add("Get some bread");
-        inputStrings.add(null);
+        String[] strings = {"Pick up apples", "Get some bread", null};
+        inputStrings.addAll(Arrays.asList(strings));
+
 
         String actual = stringsJoiner.join(";", inputStrings);
 
         Assertions.assertEquals("", actual);
     }
+
+    @Test
+    void shouldReturnSpaceInBetweenStringsWhenDelimiterIsEmpty() {
+        String[] strings = {"A", "B", "C"};
+        inputStrings.addAll(Arrays.asList(strings));
+
+        String actual = stringsJoiner.join("", inputStrings);
+
+        Assertions.assertEquals("A B C", actual);
+     }
 }

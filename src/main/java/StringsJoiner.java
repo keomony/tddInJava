@@ -5,6 +5,10 @@ public class StringsJoiner {
     public String join(String delimiter, List<String> strings) {
         String result = "";
 
+        if(delimiter.isEmpty()){
+            delimiter = " ";
+        }
+
         if(stringsAreValid(strings)) {
 
             result = trimTheLastCharInStrings(joinStringsAndDelimiter(strings, delimiter, result));
