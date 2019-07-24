@@ -54,7 +54,6 @@ public class StringJoinerTests {
         String actual = stringsJoiner.join(",", inputStrings);
 
         Assertions.assertEquals("A,B,C", actual);
-
     }
 
     @Test
