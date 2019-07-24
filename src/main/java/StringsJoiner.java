@@ -11,7 +11,7 @@ public class StringsJoiner {
                 result += string + delimiter;
             }
 
-            return result.substring(0, result.length() - 1);
+            return trimTheLastCharInStrings(result);
         }
 
         return result;
@@ -20,6 +20,10 @@ public class StringsJoiner {
 
     private Boolean stringsAreValid(List<String> strings){
         return (strings.size() > 0 && !strings.isEmpty() && !strings.contains(null));
+    }
+
+    private String trimTheLastCharInStrings(String result){
+        return result.substring(0, result.length() - 1);
     }
 }
 
